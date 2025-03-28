@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div>
+        <!-- Encabezado de la página -->
+        <div>
+            <h1>Iniciar Sesión</h1>
+            <p>Ingrese sus credenciales para acceder</p>
+        </div>
+        
+        <!-- Mensaje de error general (inicialmente oculto) -->
+        <div id="errorGeneral" style="display: none; color: red;"></div>
+        
+        <!-- Mensaje de éxito (inicialmente oculto) -->
+        <div id="mensajeExito" style="display: none; color: green;"></div>
+        
+        <!-- Formulario de inicio de sesión -->
+        <form id="formularioLogin">
+            <!-- Campo de correo electrónico -->
+            <div>
+                <label for="correo">Correo electrónico:</label>
+                <input id="correo" name="correo" type="email" placeholder="Ingrese su correo electrónico" required>
+                <!-- Mensaje de error para el correo -->
+                <p id="errorCorreo" style="color: red; display: none;"></p>
+            </div>
+            
+            <!-- Campo de contraseña -->
+            <div>
+                <label for="contrasena">Contraseña:</label>
+                <input id="contrasena" name="contrasena" type="password" placeholder="Ingrese su contraseña" required>
+                <!-- Mensaje de error para la contraseña -->
+                <p id="errorContrasena" style="color: red; display: none;"></p>
+            </div>
+            
+            <!-- Enlace para recuperar contraseña -->
+            <div>
+                <a href="../CONTRASENAS/recuperar-contrasena.html">¿Olvidó su contraseña?</a>
+            </div>
+            
+            <!-- Botón para enviar el formulario -->
+            <div>
+                <button type="submit">Acceder</button>
+            </div>
+        </form>
+        
+        <!-- Enlace a la página de registro -->
+        <div>
+            <p>
+                ¿No tiene una cuenta?
+                <a href="../REGISTRARSE/registro.html">Registrarse</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Incluir el archivo JavaScript para la validación del formulario -->
+    <script src="../INICIAR SESION/iniciar-sesion.js"></script>
+</body>
+</html>
