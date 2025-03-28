@@ -3,7 +3,7 @@ include('conexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // 1. Capturar datos del formulario
+    // Capturar datos del formulario
     $nombre = trim($_POST["nombre"]);
     $apellido = trim($_POST["apellido"]);
     $identificacion = trim($_POST["identificacion"]);
@@ -12,13 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $genero = intval($_POST["genero"]);
     $rol = 1; // Invitado por defecto
 
-    // 2. Validar campos vacíos
+    // Validar campos vacíos
     if (empty($nombre) || empty($apellido) || empty($identificacion) || empty($email) || empty($contrasena) || empty($genero)) {
         echo "Todos los campos son obligatorios.";
         exit();
     }
 
-    // 3. Verificar si el correo ya existe
+    // Verificar si el correo ya existe
     $stmt = $conn->prepare("SELECT id_usuario FROM usuarios WHERE correo = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 
-    // 4. Encriptar la contraseña
+    // Encriptar la contraseña
     $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
 
-    // 5. Insertar en la base de datos
+    //Insertar en la base de datos
     $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellido, identificacion, correo, contraseña, id_genero, id_rol) 
                             VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssisssi", $nombre, $apellido, $identificacion, $email, $hashed_password, $genero, $rol);
