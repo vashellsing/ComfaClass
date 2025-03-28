@@ -1,7 +1,7 @@
 <?php
 require_once 'conexion.php'; 
 
-$sql = "SELECT id_genero, nombre FROM generos";
+$sql = "SELECT id_genero, nombre_genero FROM generos";
 $result = $conn->query($sql);
 
 $generos = array();

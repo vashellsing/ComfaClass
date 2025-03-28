@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             data.forEach(genero => {
                 const option = document.createElement('option');
                 option.value = genero.id_genero;
-                option.textContent = genero.nombre;
+                option.textContent = genero.nombre_genero;
                 generoSelect.appendChild(option);
             });
         })
@@ -95,6 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
     togglePassword("contrasena", "mostrarContrasena");
     togglePassword("confirmar_contrasena", "mostrarConfirmarContrasena");
 
+
+    
     // IMPORTANTE: Definir form
     const form = document.getElementById("registroForm");
 
