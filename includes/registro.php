@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Verificar si el correo ya existe
-    $stmt = $conn->prepare("SELECT id_usuario FROM usuarios WHERE correo = ?");
+    $stmt = $conn->prepare("SELECT id_usuario FROM usuarios WHERE correo_usuario = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
@@ -33,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 
     // Encriptar la contraseña
-    $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
+    $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
     //Insertar en la base de datos
-    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellido, identificacion, correo, contraseña, id_genero, id_rol) 
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre_usuario, apellido_usuario, identificacion_usuario, correo_usuario, contrasena_usuario, id_genero, id_rol) 
                             VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssisssi", $nombre, $apellido, $identificacion, $email, $hashed_password, $genero, $rol);
+    $stmt->bind_param("ssisssi", $nombre, $apellido, $identificacion, $email, $hash_contrasena, $genero, $rol);
 
     if ($stmt->execute()) {
        
