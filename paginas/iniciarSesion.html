@@ -4,62 +4,53 @@
     <!-- Metadatos básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Iniciar Sesión - Confaclass</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../Recursos/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Recursos/css/style.css">
 </head>
 <body>
-    <!-- Contenedor principal -->
-    <div>
-        <!-- Encabezado de la página -->
-        <div>
-            <h1>Iniciar Sesión</h1>
-            <p>Ingrese sus credenciales para acceder</p>
-        </div>
-        
-        <!-- Mensaje de error general (inicialmente oculto) -->
-        <div id="errorGeneral" style="display: none; color: red;"></div>
-        
-        <!-- Mensaje de éxito (inicialmente oculto) -->
-        <div id="mensajeExito" style="display: none; color: green;"></div>
-        
-        <!-- Formulario de inicio de sesión -->
-        <form id="formularioLogin">
-            <!-- Campo de correo electrónico -->
-            <div>
-                <label for="correo">Correo electrónico:</label>
-                <input id="correo" name="correo" type="email" placeholder="Ingrese su correo electrónico" required>
-                <!-- Mensaje de error para el correo -->
-                <p id="errorCorreo" style="color: red; display: none;"></p>
-            </div>
-            
-            <!-- Campo de contraseña -->
-            <div>
-                <label for="contrasena">Contraseña:</label>
-                <input id="contrasena" name="contrasena" type="password" placeholder="Ingrese su contraseña" required>
-                <!-- Mensaje de error para la contraseña -->
-                <p id="errorContrasena" style="color: red; display: none;"></p>
-            </div>
-            
-            <!-- Enlace para recuperar contraseña -->
-            <div>
-                <a href="../CONTRASENAS/recuperar-contrasena.html">¿Olvidó su contraseña?</a>
-            </div>
-            
-            <!-- Botón para enviar el formulario -->
-            <div>
-                <button type="submit">Acceder</button>
-            </div>
-        </form>
-        
-        <!-- Enlace a la página de registro -->
-        <div>
-            <p>
-                ¿No tiene una cuenta?
-                <a href="../REGISTRARSE/registro.html">Registrarse</a>
-            </p>
-        </div>
-    </div>
 
-    <!-- Incluir el archivo JavaScript para la validación del formulario -->
-    <script src="../INICIAR SESION/iniciar-sesion.js"></script>
+    <!-- Header -->
+    <header id="header"></header>
+
+    <main class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center">Iniciar Sesión</h2>
+            <p class="text-center">Ingrese sus credenciales para acceder</p>
+            
+            <!-- Mensaje de error general -->
+            <div id="errorMensaje" class="alert alert-danger d-none" role="alert">
+                Usuario o contraseña incorrectos
+            </div>
+            
+            <form id="iniciarSesionDe">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            </form>
+            
+            <div class="text-center mt-3">
+                <a href="recuperarContrasena.html">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="text-center mt-2">
+                <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="../Recursos/js/bootstrap.bundle.min.js"></script>
+    <script src="../Recursos/js/iniciarsesion.js"></script>
 </body>
 </html>
