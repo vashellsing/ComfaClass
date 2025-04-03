@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const validarContrasena = (input) => {
-        const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[#!?¡."$%&()\-_:;,@]).{8,20}$/;
+        const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[#!?¡."$%&()\-_:;,@]).{8,12}$/;
         if (!regex.test(input.value)) {
-            mostrarError(input, "Debe tener entre 8 y 20 caracteres, al menos 1 mayúscula, 1 número y 1 símbolo.");
+            mostrarError(input, "Debe tener entre 8 y 12 caracteres, al menos 1 mayúscula, 1 número y 1 símbolo.");
             return false;
         }
         limpiarError(input);
