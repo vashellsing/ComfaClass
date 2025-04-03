@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion cursos</title>
+</head>
+<body>
+<!-- cambiar el nombre del arcchivo por "profesorcrearcursos">-->
+    <main>
+        <h2>Bienvenido, profesor </h2>
+        <p>Aquí puedes crear nuevos cursos.</p>
+    </main>
+
+    <h1>Administración de Cursos</h1>
+<!-- formulario para los datos solicitados y sus condiciones>-->
+    <form id="formcursos">
+        <label for="nombreCurso">Nombre del Curso (máx. 20 caracteres):</label>
+        <input type="text" id="nombreCurso" maxlength="20" required><br><br>
+
+<!-- opciones de facultad, carrera, materia, horario y descripcion-->
+        <label for="facultad">Facultad:</label>
+        <select id="facultad" required>
+            <option value="">Seleccione una facultad</option>
+            <option value="ingenieria">Ingeniería</option>
+            <option value="ciencias">Ciencias</option>
+            <option value="artes">Artes</option>
+        </select><br><br>
+<!-- opciones de carrera-->
+        <label for="carrera">Carrera:</label>
+        <select id="carrera" required>
+            <option value="">Seleccione una carrera</option>
+        </select><br><br>
+
+        <label for="materia">Materia:</label>
+        <select id="materia" required>
+            <option value="">Seleccione una materia</option>
+        </select><br><br>
+<!-- opciones de horario-->
+        <label for="horario">Horario:</label>
+        <input type="text" id="horario" required><br><br>
+
+        <label for="descripcion">Descripción (máx. 250 caracteres):</label>
+        <textarea id="descripcion" maxlength="250" required></textarea><br><br>
+
+        <button type="submit">Crear Curso</button>
+        <button type="button" id="cancelarCurso">Limpiar datos</button>
+
+    </form>
+
+
+    <footer>
+        <p>&copy; 2024 ComfaClass. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="profesorVerCursos.js"></script>
+</body>
+</html>
