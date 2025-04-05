@@ -1,99 +1,133 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Confaclass</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../Recursos/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Recursos/css/style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header id="header"></header>
-    
- <main class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2 class="text-center mb-4">Registro</h2>
-
-            <!-- Inicio del formulario -->
-
-            <form id="registroForm" method="POST" novalidate>
-                
-                <!-- Nombre  -->    
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombres</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required minlength="3">
-                    <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Apellido  -->
-                <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="apellido" name="apellido" required minlength="3">
-                    <div class="invalid-feedback"></div>
-                </div>
-                <!-- Identificación -->
-                <div class="mb-3">
-                    <label for="identificacion" class="form-label">Número de Identificación</label>
-                    <input type="text" class="form-control" id="identificacion" name="identificacion" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Correo -->
-                <div class="mb-3">
-                    <label for="email" class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Contraseña -->
-                <div class="mb-3">
-                    <label for="contrasena" class="form-label">Contraseña</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="contrasena" name="contrasena" required minlength="8">
-                        <button class="btn btn-outline-secondary" type="button" id="mostrarContrasena">👁️</button>
-                    </div>
-                    <div class="form-text">Mínimo 8 caracteres, 1 mayúscula, 1 número y 1 carácter especial.</div>
-                    <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Confirmar Contraseña -->
-                <div class="mb-3">
-                    <label for="confirmar_contrasena" class="form-label">Confirmar Contraseña</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="confirmar_contrasena" name="confirmar_contrasena" required>
-                        <button class="btn btn-outline-secondary" type="button" id="mostrarConfirmarContrasena">👁️</button>
-                    </div>
-                    <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Género -->
-                <div class="mb-3">
-                    <label for="genero" class="form-label">Género</label>
-                    <select class="form-select" id="genero" name="genero" required>
-                        <option value="">Seleccione una opción</option>
-                    </select>
-                    <div class="invalid-feedback"></div>
-                </div>
-               
-         
-                <button type="submit" class="btn btn-primary w-100 mb-2">Registrarse</button>
-                <a href="../index.html" class="btn btn-secondary w-100">Volver al inicio</a>
-            </form>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0 text-center">Registro de Usuario</h4>
         </div>
-    </div>
-</main>
+        <div class="card-body">
+          <form id="registroForm" method="POST" novalidate>
+            <!-- Nombres -->
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombres</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                required
+                minlength="3"
+              />
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Apellidos -->
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellidos</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellido"
+                name="apellido"
+                required
+                minlength="3"
+              />
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Identificación -->
+            <div class="mb-3">
+              <label for="identificacion" class="form-label"
+                >Número de Identificación</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="identificacion"
+                name="identificacion"
+                required
+              />
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Correo -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Contraseña -->
+            <div class="mb-3">
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="contrasena"
+                  name="contrasena"
+                  required
+                  minlength="8"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="mostrarContrasena"
+                >
+                  👁️
+                </button>
+              </div>
 
-    
-    
-    <!-- Footer -->
-    <footer id="footer" class="mt-5"></footer>
-    
-    <!-- Scripts -->
-    <script src="../Recursos/js/bootstrap.bundle.min.js"></script>
-    <script src="../Recursos/js/componentes.js"></script>
-    <script src="../Recursos/js/registro.js"></script>
-</body>
-</html>
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Confirmar Contraseña -->
+            <div class="mb-3">
+              <label for="confirmar_contrasena" class="form-label"
+                >Confirmar Contraseña</label
+              >
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmar_contrasena"
+                  name="confirmar_contrasena"
+                  required
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="mostrarConfirmarContrasena"
+                >
+                  👁️
+                </button>
+              </div>
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Género -->
+            <div class="mb-3">
+              <label for="genero" class="form-label">Género</label>
+              <select class="form-select" id="genero" name="genero" required>
+                <option value="">Seleccione una opción</option>
+                <!-- Opciones se pueden llenar dinámicamente -->
+              </select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <!-- Botones -->
+            <button type="submits" class="btn btn-primary w-100 mb-2">
+              Registrarse
+            </button>
+            <button
+              type="button"
+              class="btn btn-success w-100"
+              onclick="navegarA('login')"
+            >
+              Iniciar Sesión
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
