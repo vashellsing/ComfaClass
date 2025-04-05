@@ -1,37 +1,57 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
-    const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("password");
 
-    // Alternar visibilidad de la contraseña
-    togglePassword.addEventListener("click", function () {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            togglePassword.textContent = "🙈";
-        } else {
-            passwordInput.type = "password";
-            togglePassword.textContent = "👁️";
-        }
-    });
+(() => {
+    
+// Selecciona el formulario
+const formularioLogin = document.querySelector("#formLogin");
 
-    // Manejo del formulario de login
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+if (formularioLogin) {
+    // Si no existe el contenedor de error, lo creamos y lo insertamos debajo del campo de email
+    let mensajeError = document.querySelector("#mensajeError");
+    if (!mensajeError) {
+        mensajeError = document.createElement("small");
+        mensajeError.id = "mensajeError";
+        mensajeError.classList.add("form-text", "text-danger");
+        mensajeError.style.display = "none";
+        const emailInput = document.getElementById("email");
+        emailInput.parentNode.insertBefore(mensajeError, emailInput.nextSibling);
+    }
 
-        const email = document.getElementById("email").value;
-        const password = passwordInput.value;
+    formularioLogin.addEventListener("submit", (evento) => {
+        evento.preventDefault(); // Evita el envío inmediato
 
-        if (email.trim() === "" || password.trim() === "") {
-            alert("Todos los campos son obligatorios");
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        // Verifica que el correo termine en "@gmail.com" o "@hotmail.com"
+        if (!email.endsWith("@gmail.com") && !email.endsWith("@hotmail.com")) {
+            mensajeError.textContent = "El correo ingresado no esta permitido. Solo se aceptan @gmail.com o @hotmail.com.";
+            mensajeError.style.display = "block";
             return;
+        } else {
+            mensajeError.textContent = "";
+            mensajeError.style.display = "none";
         }
 
-        // Simulación de autenticación
-        if (email === "admin@confaclass.com" && password === "admin123") {
-            alert("Inicio de sesión exitoso");
-            window.location.href = "dashboard.html"; // Redirigir al panel
-        } else {
-            alert("Correo o contraseña incorrectos");
-        }
+        console.log("Correo permitido:", email);
+
+        // Envio de las credenciales mediante fetch a login.php
+        fetch("./includes/login.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message); // Inicio de sesion exitoso
+            } else {
+                alert(data.message); // Mostrar mensaje de error
+            }
+        })
+        .catch(error => console.error("Error:", error));
     });
-});
+} else {
+    console.error("No se encontro el formulario con id 'formLogin'.");
+}
+
+})();
