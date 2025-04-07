@@ -23,15 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Cargar el script de cada página (si existe)
+    
+
     function cargarScriptPagina(pagina) {
-        
-        // Agrega un parámetro de tiempo para evitar conflictos de caché
         const rutaScript = `recursos/js/${pagina}.js?t=${new Date().getTime()}`;
         const scriptExistente = document.getElementById("ScriptDinamico");
         if (scriptExistente) scriptExistente.remove();
         const script = document.createElement("script");
         script.src = rutaScript;
         script.id = "ScriptDinamico";
+        
+        // Manejo de error para no interrumpir la SPA si el script no existe
+        script.onerror = () => {
+            console.warn(`No se pudo cargar el script: ${rutaScript}`);
+        };
+        
         document.body.appendChild(script);
     }
 
@@ -39,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     cargarComponente("footer", "componentes/footer.html");
     cargarComponente("header", "componentes/header.html");
-    cargarComponente("aside", "componentes/aside.html");
+    // cargarComponente("aside", "componentes/aside.html");
     
     
     // Exponer 'navegarA' al ámbito global para usarlo en tus componentes
