@@ -1,37 +1,62 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
-    const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("password");
+(() => {
+    
+    // Selecciona el formulario
+    const formularioLogin = document.querySelector("#formLogin");
 
-    // Alternar visibilidad de la contraseña
-    togglePassword.addEventListener("click", function () {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            togglePassword.textContent = "🙈";
-        } else {
-            passwordInput.type = "password";
-            togglePassword.textContent = "👁️";
-        }
-    });
-
-    // Manejo del formulario de login
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const password = passwordInput.value;
-
-        if (email.trim() === "" || password.trim() === "") {
-            alert("Todos los campos son obligatorios");
-            return;
+    if (formularioLogin) {
+        // Si no existe el contenedor de error, lo creamos y lo insertamos debajo del campo de email
+        let mensajeError = document.querySelector("#mensajeError");
+        if (!mensajeError) {
+            mensajeError = document.createElement("small");
+            mensajeError.id = "mensajeError";
+            mensajeError.classList.add("form-text", "text-danger");
+            mensajeError.style.display = "none";
+            const emailInput = document.getElementById("email");
+            emailInput.parentNode.insertBefore(mensajeError, emailInput.nextSibling);
         }
 
-        // Simulación de autenticación
-        if (email === "admin@confaclass.com" && password === "admin123") {
-            alert("Inicio de sesión exitoso");
-            window.location.href = "dashboard.html"; // Redirigir al panel
-        } else {
-            alert("Correo o contraseña incorrectos");
-        }
-    });
-});
+        formularioLogin.addEventListener("submit", (evento) => {
+            evento.preventDefault(); // Evita el envío inmediato
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            // Verifica que el correo termine en "@gmail.com" o "@hotmail.com"
+            if (!email.endsWith("@gmail.com") && !email.endsWith("@hotmail.com")) {
+                mensajeError.textContent = "El correo ingresado no esta permitido. Solo se aceptan @gmail.com o @hotmail.com.";
+                mensajeError.style.display = "block";
+                return;
+            } else {
+                mensajeError.textContent = "";
+                mensajeError.style.display = "none";
+            }
+
+            console.log("Correo permitido:", email);
+
+            // Envío de las credenciales mediante fetch a login.php
+            fetch("./includes/login.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message); // Opcional: Muestra el mensaje de éxito
+                    // Redirige a la URL indicada por el backend
+                    if (typeof window.navegarA === "function") {
+                        window.navegarA(data.redirect);
+                    } else {
+                        console.error("La función navegarA no está definida.");
+                    }
+                } else {
+                    alert(data.message); // Mostrar mensaje de error
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    } else {
+        console.error("No se encontró el formulario con id 'formLogin'.");
+    }
+
+})();

@@ -66,11 +66,11 @@ CREATE TABLE IF NOT EXISTS `facultades` (
 -- Volcando estructura para tabla comfaclass.generos
 DROP TABLE IF EXISTS `generos`;
 CREATE TABLE IF NOT EXISTS `generos` (
-  `id_genero` int(11) NOT NULL AUTO_INCREMENT,
+  `id_genero` tinyint(4) NOT NULL AUTO_INCREMENT,
   `nombre_genero` varchar(50) NOT NULL,
   PRIMARY KEY (`id_genero`),
   UNIQUE KEY `nombre` (`nombre_genero`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -107,11 +107,11 @@ CREATE TABLE IF NOT EXISTS `materias` (
 -- Volcando estructura para tabla comfaclass.roles
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
-  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
+  `id_rol` tinyint(4) NOT NULL AUTO_INCREMENT,
   `nombre_rol` varchar(50) NOT NULL,
   PRIMARY KEY (`id_rol`),
   UNIQUE KEY `nombre` (`nombre_rol`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -119,13 +119,13 @@ CREATE TABLE IF NOT EXISTS `roles` (
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `id_rol` int(11) NOT NULL,
-  `id_genero` int(11) NOT NULL,
-  `identificacion_usuario` int(15) NOT NULL,
-  `nombre_usuario` varchar(100) NOT NULL,
-  `apellido_usuario` varchar(100) NOT NULL,
+  `id_rol` tinyint(4) NOT NULL,
+  `id_genero` tinyint(4) NOT NULL,
+  `identificacion_usuario` varchar(20) NOT NULL,
+  `nombre_usuario` varchar(25) NOT NULL,
+  `apellido_usuario` varchar(25) NOT NULL,
   `correo_usuario` varchar(100) NOT NULL,
-  `contrasena_usuario` varchar(255) NOT NULL,
+  `contrasena_usuario` varchar(12) NOT NULL,
   `fotoPerfil_usuario` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `correo` (`correo_usuario`) USING BTREE,
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   KEY `id_genero` (`id_genero`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id_genero`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- La exportación de datos fue deseleccionada.
 

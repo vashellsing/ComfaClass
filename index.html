@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confaclass - Plataforma Educativa</title>
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="Recursos/css/bootstrap.min.css">
-    <link rel="stylesheet" href="Recursos/css/style.css">
-</head>
-<body>
-
-    <!-- Header -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPA con Bootstrap</title>
+    <link rel="stylesheet" href="recursos/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <!-- Nav -->
     <header id="header"></header>
 
-    <main class="container text-center mt-5">
-        <section class="bienvenida">
-            <h1 class="fw-bold">Bienvenido a Confaclass</h1>
-            <p class="lead">La mejor plataforma para gestionar tus clases y mejorar tu aprendizaje.</p>
-            <div class="d-flex justify-content-center gap-3 mt-3">
-                <a href="paginas/iniciarSesion.html" class="btn btn-primary">Iniciar Sesión</a>
-                <a href="paginas/registro.html" class="btn btn-outline-primary">Registrarse</a>
-            </div>
-        </section>
+    <div class="container mt-5">
+      <div class="row">
 
-        <section class="descripcion mt-5">
-            <h2 class="fw-bold">¿Qué es Confaclass?</h2>
-            <p class="text-muted">Confaclass es una plataforma diseñada para estudiantes, profesores y administradores, permitiendo una gestión eficiente de clases y recursos educativos.</p>
-            <!-- <img src="Recursos/img/educacion.svg" class="img-fluid mt-3" alt="Ilustración de educación"> -->
-        </section>
-    </main>
+        <!-- Aside -->
+
+        <!-- <aside class="col-md-3 mt-5" id="aside"></aside> -->
+
+        <!-- Carga de paginas  -->
+
+        <main class="col-md-9 mt-5" id="main">
+          <h1 class="text-center">Bienvenido a Mi SPA</h1>
+          <p class="text-center">
+            Esta es una aplicacion de ejemplo utilizando Bootstrap y JavaScript.
+          </p>
+
+          <div class="text-center">
+            <button class="btn btn-success" onclick="navegarA('registro')">
+              Registrarse
+            </button>
+            <button class="btn btn-primary" onclick="navegarA('login')">
+              login
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
 
     <!-- Footer -->
-    <footer id="footer" class="mt-5"></footer>
+    <footer id="footer"></footer>
 
     <!-- Scripts -->
-    <script src="Recursos/js/bootstrap.bundle.min.js"></script>
-    <script src="Recursos/js/componentes.js"></script>
-    <script src="Recursos/js/header.js"></script>
-    <script src="Recursos/js/footer.js"></script>
+    <script src="recursos/js/bootstrap.bundle.min.js"></script>
+    <script src="recursos/js/main.js"></script>
   </body>
-  
-
-</body>
 </html>
