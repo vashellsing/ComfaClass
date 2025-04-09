@@ -1,65 +1,60 @@
--- Insertar roles
-INSERT INTO roles (id_rol, nombre_rol) VALUES
+  -- *******************************
+-- Inserción de datos en comfaclass
+-- *******************************
+
+-- 1. Facultad (única)
+INSERT INTO `facultades` (id_facultad, nombre_facultad) VALUES
+(1, 'Facultad de Ingenierías');
+
+-- 2. Roles
+INSERT INTO `roles` (id_rol, nombre_rol) VALUES
 (1, 'Invitado'),
 (2, 'Profesor'),
 (3, 'Estudiante'),
 (4, 'Administrador');
 
--- Insertar géneros
-INSERT INTO generos (id_genero, nombre_genero) VALUES
+-- 3. Géneros
+INSERT INTO `generos` (id_genero, nombre_genero) VALUES
 (1, 'Masculino'),
 (2, 'Femenino'),
 (3, 'Otro');
 
--- Insertar facultad
-INSERT INTO facultades (nombre_facultad) VALUES
-('Facultad de Ingenierías');
+-- 4. Carreras (solo dos registros: Sistemas y Mecatrónica)
+INSERT INTO `carreras` (id_carrera, id_facultad, nombre_carrera) VALUES
+(1, 1, 'Ingeniería en Sistemas'),
+(2, 1, 'Ingeniería Mecatrónica');
 
--- Insertar carreras
-INSERT INTO carreras (id_facultad, nombre_carrera) VALUES
-(1, 'Ingeniería de Sistemas'),
-(1, 'Ingeniería Mecatrónica');
+-- 5. Materias (se agregan ejemplos pertinentes)
 
--- Insertar materias
--- Para Ingeniería de Sistemas (id_carrera = 1)
-INSERT INTO materias (id_carrera, nombre_materia) VALUES
-(1, 'Programación I'),
-(1, 'Estructuras de Datos'),
-(1, 'Bases de Datos');
+-- Para Ingeniería en Sistemas (id_carrera = 1)
+INSERT INTO `materias` (id_materia, id_carrera, nombre_materia) VALUES
+(1, 1, 'Programación'),
+(2, 1, 'Base de Datos'),
+(3, 1, 'Sistemas Operativos'),
+(4, 1, 'Redes de Computadores');
 
 -- Para Ingeniería Mecatrónica (id_carrera = 2)
-INSERT INTO materias (id_carrera, nombre_materia) VALUES
-(2, 'Circuitos Eléctricos'),
-(2, 'Mecánica Aplicada'),
-(2, 'Control Automático');
+INSERT INTO `materias` (id_materia, id_carrera, nombre_materia) VALUES
+(5, 2, 'Control Automático'),
+(6, 2, 'Mecánica de Materiales'),
+(7, 2, 'Electrónica Industrial'),
+(8, 2, 'Robótica');
 
--- Insertar usuarios
-INSERT INTO usuarios (
-  id_rol, id_genero, identificacion_usuario, 
-  nombre_usuario, apellido_usuario, 
-  correo_usuario, contrasena_usuario, fotoPerfil_usuario
-) VALUES
-(2, 1, '1234567890', 'Carlos', 'Pérez', 'carlos.perez@comfaclass.edu', 'abc123456789', NULL),
-(3, 2, '2234567891', 'Laura', 'Gómez', 'laura.gomez@comfaclass.edu', 'pass456123', NULL),
-(3, 1, '3234567892', 'Andrés', 'Rodríguez', 'andres.rodriguez@comfaclass.edu', 'mypass7890', NULL),
-(1, 3, '4234567893', 'Alex', 'Moreno', 'alex.moreno@comfaclass.edu', 'guestpass', NULL),
-(2, 2, '5234567894', 'Sofía', 'Martínez', 'sofia.martinez@comfaclass.edu', 'teachpass', NULL),
-(4, 1, '9999999999', 'Admin', 'Root', 'admin@comfaclass.edu', 'adminsecurepass123', NULL);
+-- 6. Usuarios (ejemplos de registros; las contraseñas son hashes simulados)
+INSERT INTO `usuarios` (id_usuario, id_rol, id_genero, identificacion_usuario, nombre_usuario, apellido_usuario, correo_usuario, contrasena_usuario, fotoPerfil_usuario) VALUES
+(1, 2, 1, '1001', 'Juan', 'Perez', 'juan.perez@comfaclass.edu', '$2y$10$hashprofesor', NULL),
+(2, 3, 2, '1002', 'Maria', 'Lopez', 'maria.lopez@comfaclass.edu', '$2y$10$hashestudiante', NULL),
+(3, 1, 1, '1003', 'Pedro', 'Garcia', 'pedro.garcia@comfaclass.edu', '$2y$10$hashinvitado', NULL),
+(4, 4, 1, '1004', 'Admin', 'Root', 'admin@comfaclass.edu', '$2y$10$hashadmin', NULL);
 
--- Insertar cursos
--- Nota: Asegúrate de que los IDs de materias sean los correctos según el orden de inserción
-INSERT INTO cursos (id_usuario, id_materia, nombre_curso, descripcion_curso) VALUES
-(1, 1, 'Curso Básico de Programación', 'Introducción a la programación estructurada'),
-(2, 4, 'Circuitos para principiantes', 'Aprendizaje básico de circuitos eléctricos'),
-(3, 2, 'Estructuras Lógicas', 'Estructuras de datos aplicadas a problemas reales'),
-(5, 5, 'Mecánica I', 'Fundamentos de mecánica aplicada'),
-(1, 3, 'Bases de Datos Relacionales', 'Modelo entidad-relación y SQL'),
-(2, 6, 'Automatización Industrial', 'Principios de control automático en ingeniería');
+-- 7. Cursos (ejemplos; asegúrate de que el id_materia corresponda a las materias insertadas)
+INSERT INTO `cursos` (id_curso, id_usuario, id_materia, nombre_curso, descripcion_curso) VALUES
+(1, 1, 1, 'Curso de Programación', 'Aprende fundamentos de programación.'),
+(2, 1, 2, 'Curso de Base de Datos', 'Introducción a la gestión de bases de datos.'),
+(3, 2, 3, 'Curso de Sistemas Operativos', 'Explora el funcionamiento de los sistemas operativos.');
 
--- Insertar inscripciones
-INSERT INTO inscripciones (id_curso, id_usuario) VALUES
-(1, 2),
-(1, 3),
-(2, 3),
-(3, 4),
-(5, 2);
+-- 8. Inscripciones (ejemplos de inscripción de usuarios a cursos)
+INSERT INTO `inscripciones` (id_inscripcion, id_curso, id_usuario) VALUES
+(1, 1, 2),  -- Maria se inscribe en "Curso de Programación"
+(2, 2, 2),  -- Maria también se inscribe en "Curso de Base de Datos"
+(3, 3, 3);  -- Pedro se inscribe en "Curso de Sistemas Operativos"
