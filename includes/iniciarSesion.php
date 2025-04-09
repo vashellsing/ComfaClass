@@ -53,6 +53,12 @@ if ($resultado->num_rows > 0) {
             case 3: 
                 $redirectUrl = 'estudianteVista';
                 break;
+            
+            case 4: // Asumiendo que el rol 4 es un administradot con permisos especiales
+                $redirectUrl = 'administradorVista'; // o la ruta que corresponda
+                break; 
+                
+                
             default:
                 $redirectUrl = 'paginas/default';
                 break;
