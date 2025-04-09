@@ -1,60 +1,56 @@
-  -- *******************************
--- Inserción de datos en comfaclass
--- *******************************
-
--- 1. Facultad (única)
-INSERT INTO `facultades` (id_facultad, nombre_facultad) VALUES
-(1, 'Facultad de Ingenierías');
-
--- 2. Roles
-INSERT INTO `roles` (id_rol, nombre_rol) VALUES
-(1, 'Invitado'),
-(2, 'Profesor'),
-(3, 'Estudiante'),
-(4, 'Administrador');
-
--- 3. Géneros
-INSERT INTO `generos` (id_genero, nombre_genero) VALUES
-(1, 'Masculino'),
-(2, 'Femenino'),
-(3, 'Otro');
-
--- 4. Carreras (solo dos registros: Sistemas y Mecatrónica)
-INSERT INTO `carreras` (id_carrera, id_facultad, nombre_carrera) VALUES
-(1, 1, 'Ingeniería en Sistemas'),
+-- Volcado de datos para la tabla `carreras`
+INSERT INTO `carreras` (`id_carrera`, `id_facultad`, `nombre_carrera`) VALUES
+(1, 1, 'Ingeniería de Sistemas'),
 (2, 1, 'Ingeniería Mecatrónica');
 
--- 5. Materias (se agregan ejemplos pertinentes)
+-- Volcado de datos para la tabla `cursos`
+INSERT INTO `cursos` (`id_curso`, `id_usuario`, `id_materia`, `nombre_curso`, `descripcion_curso`, `fechacreacion_curso`) VALUES
+(1, 1, 1, 'Curso Básico de Programación', 'Introducción a la programación estructurada', '2025-04-09 19:53:17'),
+(2, 2, 4, 'Circuitos para principiantes', 'Aprendizaje básico de circuitos eléctricos', '2025-04-09 19:53:17'),
+(3, 3, 2, 'Estructuras Lógicas', 'Estructuras de datos aplicadas a problemas reales', '2025-04-09 19:53:17'),
+(4, 5, 5, 'Mecánica I', 'Fundamentos de mecánica aplicada', '2025-04-09 19:53:17'),
+(5, 1, 3, 'Bases de Datos Relacionales', 'Modelo entidad-relación y SQL', '2025-04-09 19:53:17'),
+(6, 2, 6, 'Automatización Industrial', 'Principios de control automático en ingeniería', '2025-04-09 19:53:17');
 
--- Para Ingeniería en Sistemas (id_carrera = 1)
-INSERT INTO `materias` (id_materia, id_carrera, nombre_materia) VALUES
-(1, 1, 'Programación'),
-(2, 1, 'Base de Datos'),
-(3, 1, 'Sistemas Operativos'),
-(4, 1, 'Redes de Computadores');
+-- Volcado de datos para la tabla `facultades`
+INSERT INTO `facultades` (`id_facultad`, `nombre_facultad`) VALUES
+(1, 'Facultad de Ingenierías');
 
--- Para Ingeniería Mecatrónica (id_carrera = 2)
-INSERT INTO `materias` (id_materia, id_carrera, nombre_materia) VALUES
-(5, 2, 'Control Automático'),
-(6, 2, 'Mecánica de Materiales'),
-(7, 2, 'Electrónica Industrial'),
-(8, 2, 'Robótica');
+-- Volcado de datos para la tabla `generos`
+INSERT INTO `generos` (`id_genero`, `nombre_genero`) VALUES
+(2, 'Femenino'),
+(1, 'Masculino'),
+(3, 'Otro');
 
--- 6. Usuarios (ejemplos de registros; las contraseñas son hashes simulados)
-INSERT INTO `usuarios` (id_usuario, id_rol, id_genero, identificacion_usuario, nombre_usuario, apellido_usuario, correo_usuario, contrasena_usuario, fotoPerfil_usuario) VALUES
-(1, 2, 1, '1001', 'Juan', 'Perez', 'juan.perez@comfaclass.edu', '$2y$10$hashprofesor', NULL),
-(2, 3, 2, '1002', 'Maria', 'Lopez', 'maria.lopez@comfaclass.edu', '$2y$10$hashestudiante', NULL),
-(3, 1, 1, '1003', 'Pedro', 'Garcia', 'pedro.garcia@comfaclass.edu', '$2y$10$hashinvitado', NULL),
-(4, 4, 1, '1004', 'Admin', 'Root', 'admin@comfaclass.edu', '$2y$10$hashadmin', NULL);
+-- Volcado de datos para la tabla `inscripciones`
+INSERT INTO `inscripciones` (`id_inscripcion`, `id_curso`, `id_usuario`, `fecha_inscripcion`) VALUES
+(1, 1, 2, '2025-04-09 19:53:17'),
+(2, 1, 3, '2025-04-09 19:53:17'),
+(3, 2, 3, '2025-04-09 19:53:17'),
+(4, 3, 4, '2025-04-09 19:53:17'),
+(5, 5, 2, '2025-04-09 19:53:17');
 
--- 7. Cursos (ejemplos; asegúrate de que el id_materia corresponda a las materias insertadas)
-INSERT INTO `cursos` (id_curso, id_usuario, id_materia, nombre_curso, descripcion_curso) VALUES
-(1, 1, 1, 'Curso de Programación', 'Aprende fundamentos de programación.'),
-(2, 1, 2, 'Curso de Base de Datos', 'Introducción a la gestión de bases de datos.'),
-(3, 2, 3, 'Curso de Sistemas Operativos', 'Explora el funcionamiento de los sistemas operativos.');
+-- Volcado de datos para la tabla `materias`
+INSERT INTO `materias` (`id_materia`, `id_carrera`, `nombre_materia`) VALUES
+(1, 1, 'Programación I'),
+(2, 1, 'Estructuras de Datos'),
+(3, 1, 'Bases de Datos'),
+(4, 2, 'Circuitos Eléctricos'),
+(5, 2, 'Mecánica Aplicada'),
+(6, 2, 'Control Automático');
 
--- 8. Inscripciones (ejemplos de inscripción de usuarios a cursos)
-INSERT INTO `inscripciones` (id_inscripcion, id_curso, id_usuario) VALUES
-(1, 1, 2),  -- Maria se inscribe en "Curso de Programación"
-(2, 2, 2),  -- Maria también se inscribe en "Curso de Base de Datos"
-(3, 3, 3);  -- Pedro se inscribe en "Curso de Sistemas Operativos"
+-- Volcado de datos para la tabla `roles`
+INSERT INTO `roles` (`id_rol`, `nombre_rol`) VALUES
+(4, 'Administrador'),
+(3, 'Estudiante'),
+(1, 'Invitado'),
+(2, 'Profesor');
+
+-- Volcado de datos para la tabla `usuarios`
+INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `id_genero`, `identificacion_usuario`, `nombre_usuario`, `apellido_usuario`, `correo_usuario`, `contrasena_usuario`, `fotoPerfil_usuario`) VALUES
+(1, 2, 1, '1234567890', 'Carlos', 'Pérez', 'carlos.perez@gmail.com', 'abc123456789', NULL),
+(2, 3, 2, '2234567891', 'Laura', 'Gómez', 'laura.gomez@hotmail.com', 'pass456123', NULL),
+(3, 3, 1, '3234567892', 'Andrés', 'Rodríguez', 'andres.rodriguez@gmail.com', 'mypass7890', NULL),
+(4, 1, 3, '4234567893', 'Alex', 'Moreno', 'alex.moreno@hotmail.com', 'guestpass', NULL),
+(5, 2, 2, '5234567894', 'Sofía', 'Martínez', 'sofia.martinez@gmail.com', 'teachpass', NULL),
+(6, 4, 1, '9999999999', 'Admin', 'Root', 'admin.root@gmail.com', 'adminsecurepass123', NULL);
