@@ -4,6 +4,7 @@ include ('conexion.php'); // Ajusta la ruta al archivo de conexión
 header('Content-Type: application/json');
 
 // Prepara la consulta
+$sql = "SELECT 
             id_curso, 
             id_usuario, 
             id_materia, 
