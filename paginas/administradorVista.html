@@ -1,0 +1,49 @@
+<div class="container py-4">
+    <h2 class="mb-4 text-center">Gestión de Roles de Usuarios</h2>
+  
+    <!-- Tabla de usuarios -->
+    <div class="table-responsive mb-5">
+      <table class="table table-bordered table-hover" id="tabla-usuarios">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>Nombre</th>
+            <th>Identificación</th>
+            <th>Correo electrónico</th>
+            <th>Rol actual</th>
+            <th>Nuevo rol</th>
+            <th>Acción</th>
+          </tr>
+        </thead>        
+        
+        <tbody id="cuerpo-tabla-usuarios">
+          <!-- Aquí se cargarán los usuarios desde JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Modal de confirmación de cambio de rol -->
+    <div class="modal fade" id="modal-confirmar-cambio" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmar cambio de rol</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+  
+          <div class="modal-body">
+            <p id="mensaje-confirmacion">
+              ¿Estás seguro de que deseas cambiar el rol de este usuario?
+            </p>
+          </div>
+  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="boton-confirmar-cambio">Confirmar</button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
